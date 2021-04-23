@@ -16,5 +16,5 @@ Product class has fields :
 
 What the API does 
   1) receives Agreement object and stores it into a file with agreement's name.
-  2) receives file path to agreement saved in previous point (in src/resources/uploads and creates Agreement object with all nested products. 
+  2) receives file path to agreement saved in previous point (in src/main/resources/uploads and creates Agreement object with all nested products. 
   3) By navigating to /api/downloads/Id (the agreement's Id) the file can be downloaded
