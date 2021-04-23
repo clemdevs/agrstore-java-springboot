@@ -1,6 +1,6 @@
 # Rest Api using the Spring Boot Framework
 
-We have two classes - Agreement and Product
+##We have two classes - Agreement and Product
 
 Agreement class has fields:
 *name - string that has the agreement name that it generates by rule "Agreement " + current date in format day_month_year.
