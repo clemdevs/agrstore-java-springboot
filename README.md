@@ -9,10 +9,10 @@ Agreement class has fields:
 This collection has only products that are directly under agreement.
         
 Product class has fields:
-+parent object - reference to agreement or parent product.
-+products - collection of children products.
-+name - string with the product name.
-+price - number with product's price. Can be non integer.
+* parent object - reference to agreement or parent product.
+* products - collection of children products.
+* name - string with the product name.
+* price - number with product's price. Can be non integer.
 
 What the API does 
   1) receives Agreement object and stores it into a file with agreement's name.
