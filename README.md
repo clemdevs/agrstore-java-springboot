@@ -3,12 +3,12 @@
 We have two classes - Agreement and Product
 
 Agreement class has fields:
-+name - string that has the agreement name that it generates by rule "Agreement " + current date in format day_month_year.
-+signed by - string with name of person who signed an agreement.
-+products - collection of products that are included into this agreement. 
+*name - string that has the agreement name that it generates by rule "Agreement " + current date in format day_month_year.
+*signed by - string with name of person who signed an agreement.
+*products - collection of products that are included into this agreement. 
 This collection has only products that are directly under agreement.
         
-Product class has fields :
+Product class has fields:
 +parent object - reference to agreement or parent product.
 +products - collection of children products.
 +name - string with the product name.
