@@ -1,11 +1,11 @@
 # Rest Api using the Spring Boot Framework
 
-##We have two classes - Agreement and Product
+## We have two classes - Agreement and Product
 
 Agreement class has fields:
-*name - string that has the agreement name that it generates by rule "Agreement " + current date in format day_month_year.
-*signed by - string with name of person who signed an agreement.
-*products - collection of products that are included into this agreement. 
+* name - string that has the agreement name that it generates by rule "Agreement " + current date in format day_month_year.
+* signed by - string with name of person who signed an agreement.
+* products - collection of products that are included into this agreement. 
 This collection has only products that are directly under agreement.
         
 Product class has fields:
