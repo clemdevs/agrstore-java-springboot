@@ -67,7 +67,7 @@ public class StorageController {
         mapper.writeValue(file, stringifiedContent);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.TEXT_PLAIN);
+        headers.setContentType(MediaType.TEXT_HTML);
         headers.setContentLength(fileLength);
         headers.setContentDispositionFormData("attachment", fileName);
 

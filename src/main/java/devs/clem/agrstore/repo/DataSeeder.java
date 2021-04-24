@@ -41,8 +41,8 @@ public class DataSeeder implements CommandLineRunner {
 
         agreements.get(0).addProduct(products.get(0));
         agreements.get(1).addProduct(products.get(1));
-        agreements.get(1).addProduct(products.get(4));
-        agreements.get(2).addProduct(products.get(3));
+        agreements.get(1).addProduct(products.get(5));
+        agreements.get(2).addProduct(products.get(2));
 
         agreementRepo.saveAll(agreements);
         productRepo.saveAll(products);
