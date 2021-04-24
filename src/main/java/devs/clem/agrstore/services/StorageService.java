@@ -18,9 +18,6 @@ public class StorageService {
 
     private final AgreementRepository agreementRepo;
 
-    // @Autowired
-    // private Environment env;
-
     @Autowired
     public StorageService(ProductRepository productRepo, AgreementRepository agreementRepo) {
         this.productRepo = productRepo;
@@ -57,5 +54,9 @@ public class StorageService {
         return thePath;
         
     }
-    
+
+    public List<Product> getAllProducts(){
+        return productRepo.findAll();
+    }
+
 }

@@ -63,15 +63,9 @@ public class Product implements Serializable {
         this.price = price;
     }
 
-    public Set<Agreement> getAgreements() {
-        return agreements;
-    }
 
-    public void setAgreements(Set<Agreement> agreements) {
-        this.agreements = agreements;
-    }    
     
     public String toString(){
-       return String.format("Id: %d Name: %s %n Price: %f", Id, name, price);
+       return String.format("Id: %d Name: %s %n Price: %d", Id, name, price);
     } 
 }

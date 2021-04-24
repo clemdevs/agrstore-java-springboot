@@ -75,4 +75,5 @@ public class StorageController {
             new FileSystemResource(file), headers, HttpStatus.OK
         );
     }
+
 }

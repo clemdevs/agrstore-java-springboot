@@ -27,8 +27,12 @@ public class DataSeeder implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         List<Product> products = new ArrayList<>();
-        products.add(new Product("HP Laptop Test1", 1234.99));
+        products.add(new Product("HP Laptop Testing One", 1234.99));
         products.add(new Product("HP Laptop Beast Gaming", 3234.99));
+        products.add(new Product("Razer Mouse Chroma One", 199.99));
+        products.add(new Product("NoAgr Asus PC", 2234.99)); //product without agreement
+        products.add(new Product("NoAgr Gaming Mouse", 135.99)); //product without agreement
+        products.add(new Product("AlienWare Gaming PC", 5614.99));
 
         List<Agreement> agreements = new ArrayList<>();
         agreements.add(new Agreement("Jon Doe"));
@@ -36,9 +40,9 @@ public class DataSeeder implements CommandLineRunner {
         agreements.add(new Agreement("Samuel Smith"));
 
         agreements.get(0).addProduct(products.get(0));
-        agreements.get(1).addProduct(products.get(0));
         agreements.get(1).addProduct(products.get(1));
-        agreements.get(2).addProduct(products.get(0));
+        agreements.get(1).addProduct(products.get(4));
+        agreements.get(2).addProduct(products.get(3));
 
         agreementRepo.saveAll(agreements);
         productRepo.saveAll(products);
