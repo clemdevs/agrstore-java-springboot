@@ -1,10 +1,11 @@
 package devs.clem.agrstore.controllers;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
@@ -59,15 +60,15 @@ public class StorageController {
         String fileName = file.getName();
         long fileLength = file.length(); 
 
-       //use Jackson's object mapper to write
-        ObjectMapper mapper = new ObjectMapper();
-        String stringifiedContent = mapper.writer().writeValueAsString(agreementContents.toString());
-
-        //use the writeValue method to write the object to the file
-        mapper.writeValue(file, stringifiedContent);
+        try (FileOutputStream fos = new FileOutputStream(file);
+        OutputStreamWriter outputFile = new OutputStreamWriter(fos, StandardCharsets.UTF_8)) {
+            outputFile .write(agreementContents.toString());
+        } catch (IOException e){
+            e.getMessage();
+        }
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.TEXT_HTML);
+        headers.setContentType(MediaType.TEXT_PLAIN);
         headers.setContentLength(fileLength);
         headers.setContentDispositionFormData("attachment", fileName);
 

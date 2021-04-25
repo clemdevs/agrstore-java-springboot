@@ -63,9 +63,4 @@ public class Product implements Serializable {
         this.price = price;
     }
 
-
-    
-    public String toString(){
-       return String.format("Id: %d Name: %s %n Price: %.2f", Id, name, price);
-    } 
 }

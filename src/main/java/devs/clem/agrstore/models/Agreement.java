@@ -91,7 +91,18 @@ public class Agreement implements Serializable {
     }
 
     public String toString(){
-        return String.format("Id: %d%n Signed By: %s%n Products: %s", Id, signedBy, products.toString());
+
+        String involves = "List of products included into this agreement:";
+        String detailsOfAgreement = String.format("Id: %d%nSigned By: %s%n%n%s%n%n", Id, signedBy, involves);
+
+        String includedProducts = "";
+        for(Product p: products){
+            String productName = p.getName();
+            double productPrice = p.getPrice();
+            includedProducts += String.format("Name: %s%nPrice: %.2f%n", productName, productPrice) ;
+        }
+        return detailsOfAgreement + includedProducts;
+
     }
     
 }
