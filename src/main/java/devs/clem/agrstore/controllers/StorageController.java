@@ -1,16 +1,11 @@
 package devs.clem.agrstore.controllers;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,33 +43,27 @@ public class StorageController {
         return storageService.getAgreements();
     }
 
-
     @GetMapping("/downloads/{Id}")
-    public ResponseEntity<FileSystemResource> writeAgreementToFileFromId(@PathVariable("Id") long agreementId) throws IOException{
-
-        String fullPath = storageService.getAgreementFilePathFromId(agreementId);
-
-        Agreement agreementContents = storageService.getAgreementById(agreementId);
-
-        File file = new File(fullPath);
-        String fileName = file.getName();
-        long fileLength = file.length(); 
-
-        try (FileOutputStream fos = new FileOutputStream(file);
-        OutputStreamWriter outputFile = new OutputStreamWriter(fos, StandardCharsets.UTF_8)) {
-            outputFile .write(agreementContents.toString());
-        } catch (IOException e){
-            e.getMessage();
-        }
-
+    public ResponseEntity<ByteArrayResource> writeAgreementToFileFromIdv2(@PathVariable("Id") long agreementId) throws IOException
+    {
+        ByteArrayResource fileToReturn = storageService.getAgreementFilePathFromId2(agreementId);
+        String fileName = fileToReturn.getFilename();
+        long fileLength = fileToReturn.contentLength();
         HttpHeaders headers = new HttpHeaders();
+
+        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName.toString() + "\"");
+        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+        headers.add("Pragma", "no-cache");
+        headers.add("Expires", "0");
+
         headers.setContentType(MediaType.TEXT_PLAIN);
         headers.setContentLength(fileLength);
-        headers.setContentDispositionFormData("attachment", fileName);
-
-        return new ResponseEntity<FileSystemResource>(
-            new FileSystemResource(file), headers, HttpStatus.OK
-        );
+        
+        return ResponseEntity.ok()
+        .headers(headers)
+        .contentLength(fileLength)
+        .body(fileToReturn);
     }
+
 
 }
