@@ -1,9 +1,0 @@
-Id: 3
-Signed By: Anette Nae
-
-List of products included into this agreement:
-
-Name: AlienWare Gaming PC
-Price: 5614,99
-Name: HP Laptop Beast Gaming
-Price: 3234,99

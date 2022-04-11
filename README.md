@@ -17,4 +17,10 @@ Product class has fields:
 What the API does 
   1) receives Agreement object and stores it into a file with agreement's name.
   2) receives file path to agreement saved in previous point (in src/main/resources/uploads and creates Agreement object with all nested products. 
-  3) By navigating to /api/downloads/Id (the agreement's Id) the file can be downloaded
+  3) By navigating to /api/downloads/{Id} (the agreement's Id) a file can be downloaded with the agreement data from the database
+
+
+How to run
+  To run the application you need an apache server running.
+  Configure the database in src/main/application.properties
+  Run the AgrstoreApplication.java file located in src/main/agrstore

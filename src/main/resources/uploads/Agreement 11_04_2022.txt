@@ -1,0 +1,7 @@
+Id: 1
+Signed By: Jon Doe
+
+List of products included into this agreement:
+
+Name: HP Laptop Testing One
+Price: 1234,99
